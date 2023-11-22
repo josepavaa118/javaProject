@@ -5,7 +5,7 @@
 package com.mycompany.padron;
 import Classes.FileReader;
 import Classes.FileChooser;
-import Classes.Votos;
+import Classes.ArrayCreator;
 import java.io.IOException;
 
 /**
@@ -24,7 +24,7 @@ public class Padron {
         fr.dataLoad();
         padronData=fr.getFileData();
         partidosData=fr.getPartidosData();
-        Votos votos= new Votos(padronData,partidosData);
-        votos.generarVotacion();
+        ArrayCreator arrays= new ArrayCreator(padronData,partidosData);
+        arrays.crearArrays();
     }
 }

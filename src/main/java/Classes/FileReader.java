@@ -79,6 +79,8 @@ public class FileReader {
     private void spaceRemovers(){
         String withoutWhitespace = getFileData().replaceAll("[\\s&&[^\\n]]+", " ").replaceAll("(?m)^\\s|\\s$", "").replaceAll("\\n+", "\n").replaceAll("^\n|\n$", "") ;
         setFileData(withoutWhitespace);
+        String cleanPartido=getPartidosData().replaceAll("[\\s&&[^\\n]]+", " ").replaceAll("(?m)^\\s|\\s$", "").replaceAll("\\n+", "\n").replaceAll("^\n|\n$", "") ;
+        setPartidosData(cleanPartido);
     }
     public void dataLoad() throws IOException{
         readFile(this.filePath,this.partidosPath);
@@ -92,7 +94,7 @@ public class FileReader {
         else{
         JOptionPane.showMessageDialog(null, """
                                             Data on Padron File: 
-                                            """ +getFileData());
+                                            """+getFileData());
         JOptionPane.showMessageDialog(null, """
                                             Data on Partidos File: 
                                             """ +getPartidosData());
