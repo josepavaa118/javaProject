@@ -21,6 +21,17 @@ public class ArrayCreator {
     String[] padronColumnas;
     String[] partidosLineas;
     String[] partidosColumnas;
+    String[][] padron;
+    String[][] partidos;
+
+
+    public String[][] getPadron() {
+        return padron;
+    }
+
+    public void setPadron(String[][] padron) {
+        this.padron = padron;
+    }
 
     public String[] getPartidosLineas() {
         return partidosLineas;
@@ -96,9 +107,10 @@ public class ArrayCreator {
         ArraySize(padronData,"padron");
         ArraySize(partidosData, "partidos");
         dataPrint();
+        padronArray();
     }
     
-    private void ArraySize(String data,String contenido){
+    private void ArraySize(String data,String contenido){//This method grabs the data from previous files, and defines how many rows/columns will be needed for both Padron/Partidos Array
         short numeroFilas=0;
         short numeroColumnas=0;
         String[] filas = data.split("\\r?\\n|\\r");//splits lines into arrays
@@ -120,6 +132,17 @@ public class ArrayCreator {
         }
         
         
+    }
+    private String[][] padronArray(){
+        padron= new String [filasPadron][columnasPadron];
+        for (int x=0;x<=filasPadron-1;x++){
+            for (int y=0;y<=columnasPadron-1;y++){
+                String[] filas = padronData.split("\\r?\\n|\\r");//splits lines into arrays
+                String[] columnas=filas[x].split(",");//splits array into columns
+                padron[x][y]=columnas[x];
+            }}
+        setPadron(padron);
+        return getPadron();
     }
     
     private void dataPrint(){
