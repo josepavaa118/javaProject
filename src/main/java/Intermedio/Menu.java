@@ -34,6 +34,7 @@ public class Menu {
                  String archivoPartidos=seleccionArchivos.getFilePath();
                  FileReader lectorArchivos= new FileReader(archivoPadron, archivoPartidos);
                  lectorArchivos.dataLoad();
+                 break;
                  
              case 2:
                  
