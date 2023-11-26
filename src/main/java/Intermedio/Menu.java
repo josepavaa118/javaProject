@@ -4,6 +4,9 @@
  */
 package Intermedio;
 
+import Classes.FileChooser;
+import Classes.FileReader;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Menu {
     
-    public void menuInicio(){
+    public void menuInicio() throws IOException{
        int seleccion=0;
        while (seleccion<4) {
          do{   
@@ -24,7 +27,14 @@ public class Menu {
          }while (seleccion>4);
          switch (seleccion){
              case 1:
-                
+                 FileChooser seleccionArchivos=new FileChooser();
+                 JOptionPane.showMessageDialog(null,"Elija el archivo que contenga el padrón electoral");
+                 String archivoPadron= seleccionArchivos.getFilePath();
+                 JOptionPane.showMessageDialog(null,"Elija el archivo que contenga los datos de los partidos");
+                 String archivoPartidos=seleccionArchivos.getFilePath();
+                 FileReader lectorArchivos= new FileReader(archivoPadron, archivoPartidos);
+                 lectorArchivos.dataLoad();
+                 
              case 2:
                  
              case 3:

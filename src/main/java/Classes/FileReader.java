@@ -16,8 +16,8 @@ import org.apache.commons.lang3.StringUtils;
  * @author josep
  */
 public class FileReader {
-    String filePath="";
-    String fileData="";
+    String padronPath="";
+    String padronData="";
     String partidosPath="";
     String partidosData="";
 
@@ -31,15 +31,15 @@ public class FileReader {
     String[] padron;
 
     public String getFileData() {
-        return fileData;
+        return padronData;
     }
 
-    public void setFileData(String fileData) {
-        this.fileData = fileData;
+    public void setFileData(String padronData) {
+        this.padronData = padronData;
     }
     
-    public FileReader (String filePath,String partidosData){
-        this.filePath=filePath;
+    public FileReader (String padronPath,String partidosData){
+        this.padronPath=padronPath;
         this.partidosPath=partidosData;
     }
      private void readFile(String padronFile, String partidosFile)throws IOException{
@@ -83,22 +83,27 @@ public class FileReader {
         setPartidosData(cleanPartido);
     }
     public void dataLoad() throws IOException{
-        readFile(this.filePath,this.partidosPath);
+        readFile(this.padronPath,this.partidosPath);
 
         //setFileData(getFileData());
         //setPartidosPath(partidosPath);
         spaceRemovers();
-        if (filePath.isEmpty()){
+        if (padronPath.isEmpty()){
             JOptionPane.showMessageDialog(null, "No valid File selected");
         }
         else{
+            JOptionPane.showMessageDialog(null, "Archivos leidos exitosamente!");
+            }
+        ArrayCreator crearArrays=new ArrayCreator(padronData, partidosData);
+        crearArrays.crearArrays();
        /* JOptionPane.showMessageDialog(null, """
                                             Data on Padron File: 
                                             """+getFileData());
         JOptionPane.showMessageDialog(null, """
                                             Data on Partidos File: 
                                             """ +getPartidosData());*/
-    }
+       
+    
     }
                                        
 }             

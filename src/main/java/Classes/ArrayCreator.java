@@ -106,7 +106,6 @@ public class ArrayCreator {
     public void crearArrays(){
         ArraySize(padronData,"padron");
         ArraySize(partidosData, "partidos");
-        //dataPrint();
         padronArray();
     }
     

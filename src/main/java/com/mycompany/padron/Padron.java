@@ -7,7 +7,9 @@ import Classes.FileReader;
 import Classes.FileChooser;
 import Classes.ArrayCreator;
 import Classes.Votos;
-import intermedio.ClaseIntermedia;
+import Intermedio.Menu;
+import java.io.IOException;
+
 
 /**
  *
@@ -15,8 +17,9 @@ import intermedio.ClaseIntermedia;
  */
 public class Padron {
 
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws IOException {
+        Menu menu=new Menu();
+        menu.menuInicio();
         //Working Main
        /* String padronData="";
         String partidosData="";
