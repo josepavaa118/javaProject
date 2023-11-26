@@ -27,7 +27,7 @@ public class FileChooser {
                 }
                 else{
                     String fileExtension=fileUtils.getExtension(chooser.getSelectedFile().getAbsolutePath());
-                    JOptionPane.showMessageDialog(null, fileExtension);
+                    //JOptionPane.showMessageDialog(null, fileExtension);
                     if (!fileExtension.equals("txt")){
                         JOptionPane.showMessageDialog(null, "Invalid File Type!");
                     }

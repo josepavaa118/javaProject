@@ -92,12 +92,12 @@ public class FileReader {
             JOptionPane.showMessageDialog(null, "No valid File selected");
         }
         else{
-        JOptionPane.showMessageDialog(null, """
+       /* JOptionPane.showMessageDialog(null, """
                                             Data on Padron File: 
                                             """+getFileData());
         JOptionPane.showMessageDialog(null, """
                                             Data on Partidos File: 
-                                            """ +getPartidosData());
+                                            """ +getPartidosData());*/
     }
     }
                                        

@@ -7,7 +7,7 @@ import Classes.FileReader;
 import Classes.FileChooser;
 import Classes.ArrayCreator;
 import Classes.Votos;
-import java.io.IOException;
+import intermedio.ClaseIntermedia;
 
 /**
  *
@@ -15,8 +15,10 @@ import java.io.IOException;
  */
 public class Padron {
 
-    public static void main(String[] args) throws IOException {
-        String padronData="";
+    public static void main(String[] args) {
+        
+        //Working Main
+       /* String padronData="";
         String partidosData="";
         short filasPadron=0;
         short columnasPadron=0;
@@ -37,6 +39,6 @@ public class Padron {
         columnasPadron=arrays.getColumnasPadron();
         Votos votos=new Votos(filasPadron,columnasPadron,filasPartidos,columnasPartidos,padronData,partidosData);
         votos.Votaciones();
-        
+        */
     }
 }

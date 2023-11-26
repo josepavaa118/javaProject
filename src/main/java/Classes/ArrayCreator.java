@@ -106,7 +106,7 @@ public class ArrayCreator {
     public void crearArrays(){
         ArraySize(padronData,"padron");
         ArraySize(partidosData, "partidos");
-        dataPrint();
+        //dataPrint();
         padronArray();
     }
     
@@ -135,12 +135,14 @@ public class ArrayCreator {
     }
     private String[][] padronArray(){
         padron= new String [filasPadron][columnasPadron];
-        for (int x=0;x<=filasPadron-1;x++){
-            for (int y=0;y<=columnasPadron-1;y++){
-                String[] filas = padronData.split("\\r?\\n|\\r");//splits lines into arrays
-                String[] columnas=filas[x].split(",");//splits array into columns
-                padron[x][y]=columnas[x];
-            }}
+        String[] filas = padronData.split("\\r?\\n|\\r");//splits lines into arrays
+        for (int x=0;x<=filas.length-1;x++ ){
+            String[] columnas=filas[x].split(",");//splits array into columns
+            for (int y=0;y<=columnas.length-1;y++ ){
+                padron[x][y]=columnas[y];
+            }
+        }
+       
         setPadron(padron);
         return getPadron();
     }
