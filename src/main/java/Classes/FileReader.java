@@ -88,14 +88,15 @@ public class FileReader {
         //setFileData(getFileData());
         //setPartidosPath(partidosPath);
         spaceRemovers();
-        if (padronPath.isEmpty()){
-            JOptionPane.showMessageDialog(null, "No valid File selected");
+        if ((padronPath.isEmpty())||(partidosPath.isEmpty())){
+            JOptionPane.showMessageDialog(null, "Error: Uno o más archivos no fueron cargados");
         }
         else{
-            JOptionPane.showMessageDialog(null, "Archivos leidos exitosamente!");
+             JOptionPane.showMessageDialog(null, "Archivos leidos exitosamente!");
+             ArrayCreator crearArrays=new ArrayCreator(padronData, partidosData);
+             crearArrays.crearArrays();
             }
-        ArrayCreator crearArrays=new ArrayCreator(padronData, partidosData);
-        crearArrays.crearArrays();
+       
        /* JOptionPane.showMessageDialog(null, """
                                             Data on Padron File: 
                                             """+getFileData());

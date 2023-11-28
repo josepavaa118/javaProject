@@ -109,11 +109,17 @@ public class ArrayCreator {
     }
 
     public void crearArrays(){
+       if ((padronData.equals(""))||(partidosData.equals("")) ){
+           JOptionPane.showMessageDialog(null,"Error 404: Archivos Padron/Partidos no encontrados!");
+        }
+       else{
         ArraySize(padronData,"padron");
         ArraySize(partidosData, "partidos");
         setPadron(llenaArreglos(filasPadron, columnasPadron, padronData));
         setPartidos(llenaArreglos(filasPartidos, columnasPartidos, partidosData));
         JOptionPane.showMessageDialog(null,"Creacion y relleno de arrays completa");
+       }
+        
     }
     
     private void ArraySize(String data,String contenido){//This method grabs the data from previous files, and defines how many rows/columns will be needed for both Padron/Partidos Array
