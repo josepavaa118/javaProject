@@ -44,10 +44,9 @@ public class Menu {
                  JOptionPane.showMessageDialog(null, "Thanks for using our system");
                  break;
              default:
-                 JOptionPane.showMessageDialog(null, "Invalid Option, Try again");
-
-                         
+                 JOptionPane.showMessageDialog(null, "Invalid Option, Try again");                
          }
+        
         }
     }
 }
