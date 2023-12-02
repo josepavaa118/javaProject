@@ -5,48 +5,42 @@
 package Classes;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
  * @author josep
  */
 public class Votos {
-    short filasPadron=0;
-    short columnasPadron=0;
-    short filasPartidos=0;
-    short columnasPartidos=0;
-    String padron;
-    String partidos;
-    String[][] datosPadron;
+    String[][] Padron;
+    String[][] Partidos;
 
-    public Votos(short filasPad,short colPad,short filasPar,short colPar,String padronData, String partidosData) {
-        this.filasPadron = filasPad;
-        this.columnasPadron=colPad;
-        this.filasPartidos=filasPar;
-        this.columnasPartidos=colPar;
-        this.padron=padronData;
-        this.partidos=partidosData;
+    public Votos(String [][]datosPadron, String [][]datosPartidos) {
+        this.Padron=datosPadron;
+        this.Partidos=datosPartidos;
     }
     
     public void Votaciones(){
-        crearMatrizPadron();
+        generarVotos();
     }
     
-    private void crearMatrizPadron(){
+    private void votosPersona(){
        
-        datosPadron= new String [filasPadron][columnasPadron];
-        int data=0;
-        for (int x=0;x<=filasPadron-1;x++){
-            for (int y=0;y<=columnasPadron-1;y++){
-                datosPadron[x][y]="test"+data;
-                data++;
-            }
-        }
-        for (int x=0;x<=filasPadron-1;x++){
-            for (int y=0;y<=columnasPadron-1;y++){
-                System.out.println(datosPadron[x][y]);
-            }
-        }
+    }
+    private void generarVotos(){
+        LocalDate fecha=obtenerFechaActual();
+    }
+    
+    /*private boolean puedeVotar(Date expiracion){
+        Date fechaActual=obtenerFechaActual();
+        if (expiracion.after())
+    }*/
+    private LocalDate obtenerFechaActual(){
+        LocalDate today = LocalDate.now();
+        return today;
     }
     
 }

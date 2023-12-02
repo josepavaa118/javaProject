@@ -118,6 +118,8 @@ public class ArrayCreator {
         setPadron(llenaArreglos(filasPadron, columnasPadron, padronData));
         setPartidos(llenaArreglos(filasPartidos, columnasPartidos, partidosData));
         JOptionPane.showMessageDialog(null,"Creacion y relleno de arrays completa");
+        Votos votos=new Votos(padron,partidos);
+        votos.Votaciones();
        }
         
     }
