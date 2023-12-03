@@ -9,6 +9,7 @@ import Classes.ArrayCreator;
 import Classes.Votos;
 import Intermedio.Menu;
 import java.io.IOException;
+import java.text.ParseException;
 
 
 /**
@@ -17,7 +18,7 @@ import java.io.IOException;
  */
 public class Padron {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
         Menu menu=new Menu();
         menu.menuInicio();
         //Working Main
