@@ -4,49 +4,71 @@
  */
 package Classes;
 
-import java.lang.reflect.Array;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Random;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author josep
  */
 public class Votos {
-    short filasPadron=0;
-    short columnasPadron=0;
-    short filasPartidos=0;
-    short columnasPartidos=0;
-    String padron;
-    String partidos;
-    String[][] datosPadron;
+    String[][] padron;
+    String[][] partidos;
 
-    public Votos(short filasPad,short colPad,short filasPar,short colPar,String padronData, String partidosData) {
-        this.filasPadron = filasPad;
-        this.columnasPadron=colPad;
-        this.filasPartidos=filasPar;
-        this.columnasPartidos=colPar;
-        this.padron=padronData;
-        this.partidos=partidosData;
+    public Votos(String [][]datosPadron, String [][]datosPartidos) {
+        this.padron=datosPadron;
+        this.partidos=datosPartidos;
     }
     
-    public void Votaciones(){
-        crearMatrizPadron();
+    public void Votaciones() throws ParseException{
+        generarVotos();
+        JOptionPane.showMessageDialog(null, "Votaciones cerradas!");
     }
     
-    private void crearMatrizPadron(){
-       
-        datosPadron= new String [filasPadron][columnasPadron];
-        int data=0;
-        for (int x=0;x<=filasPadron-1;x++){
-            for (int y=0;y<=columnasPadron-1;y++){
-                datosPadron[x][y]="test"+data;
-                data++;
+    private void generarVotos() throws ParseException{
+        for (int x=0;x<=padron.length-1;x++){
+            String fechaExp=padron[x][3];
+            LocalDate cedulaExp=convertirFecha(fechaExp);
+            if (puedeVotar(cedulaExp)){
+                padron[x][8]=String.valueOf(obtenerVoto());
             }
+            else{
+                padron[x][8]="0";
+            } 
         }
-        for (int x=0;x<=filasPadron-1;x++){
-            for (int y=0;y<=columnasPadron-1;y++){
-                System.out.println(datosPadron[x][y]);
-            }
+    }
+    
+    private LocalDate convertirFecha(String fechaExp) throws ParseException{
+        LocalDate today = LocalDate.now();
+        SimpleDateFormat formato= new SimpleDateFormat("yyyyMMdd");
+        Date fecha=formato.parse(fechaExp);
+        LocalDate fechaCedula=fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return fechaCedula; 
+    }
+    private LocalDate obtenerFechaActual(){
+        LocalDate today = LocalDate.now();
+        return today;
+    }
+    
+    private boolean puedeVotar(LocalDate fechaExp){
+        if(fechaExp.isAfter(obtenerFechaActual())){
+            return true;
         }
+        else{
+            return false;
+        }
+    }
+    
+    private int obtenerVoto(){
+        Random rand=new Random();
+        int totalPartidos=partidos.length;
+        return rand.nextInt(1, totalPartidos);
     }
     
 }

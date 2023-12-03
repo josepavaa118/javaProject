@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Classes;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 
 /**
@@ -108,7 +109,7 @@ public class ArrayCreator {
         this.columnasPartidos = columnasPartidos;
     }
 
-    public void crearArrays(){
+    public void crearArrays() throws ParseException{
        if ((padronData.equals(""))||(partidosData.equals("")) ){
            JOptionPane.showMessageDialog(null,"Error 404: Archivos Padron/Partidos no encontrados!");
         }
@@ -118,6 +119,8 @@ public class ArrayCreator {
         setPadron(llenaArreglos(filasPadron, columnasPadron, padronData));
         setPartidos(llenaArreglos(filasPartidos, columnasPartidos, partidosData));
         JOptionPane.showMessageDialog(null,"Creacion y relleno de arrays completa");
+        Votos votos=new Votos(padron,partidos);
+        votos.Votaciones();
        }
         
     }

@@ -7,6 +7,7 @@ package Classes;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import org.apache.commons.lang3.StringUtils;
@@ -82,7 +83,7 @@ public class FileReader {
         String cleanPartido=getPartidosData().replaceAll("[\\s&&[^\\n]]+", " ").replaceAll("(?m)^\\s|\\s$", "").replaceAll("\\n+", "\n").replaceAll("^\n|\n$", "") ;
         setPartidosData(cleanPartido);
     }
-    public void dataLoad() throws IOException{
+    public void dataLoad() throws IOException, ParseException{
         readFile(this.padronPath,this.partidosPath);
 
         //setFileData(getFileData());

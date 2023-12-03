@@ -7,6 +7,7 @@ package Intermedio;
 import Classes.FileChooser;
 import Classes.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class Menu {
     
-    public void menuInicio() throws IOException{
+    public void menuInicio() throws IOException, ParseException{
        int seleccion=0;
        while (seleccion<4) {
          do{   
