@@ -13,6 +13,15 @@ import javax.swing.JOptionPane;
 public class Consultas {
     String[][] padronCompleto;
     String[][] partidosCompleto;
+
+    public int getVotosNulos() {
+        return votosNulos;
+    }
+
+    public void setVotosNulos(int votosNulos) {
+        this.votosNulos = votosNulos;
+    }
+    int votosNulos=0;
     
     public Consultas (String[][] padron, String[][] partidos){
         this.padronCompleto=padron;
@@ -103,6 +112,15 @@ public class Consultas {
             return indice;
         }
         
+        public int obtenerVotosNulos(){
+            for (int x=0;x<=padronCompleto.length-1;x++){
+                if (padronCompleto[x][8].equals("nulo")){
+                    setVotosNulos(getVotosNulos()+1);
+                }
+            }
+            return getVotosNulos();
+        }
+        
         private String declararGanador(int[] votos){
             int max=0;
             int indice=0;
@@ -118,6 +136,24 @@ public class Consultas {
                 }
             }
             
+            return msg;
+        }
+        
+        public String ganadorOficial(){
+            int max=0;
+            int indice=0;
+            String msg="";
+            for (int x=0;x<=partidosCompleto.length-1;x++){
+                int votosPartido=Integer.parseInt(partidosCompleto[x][1]);
+                if(max<votosPartido){
+                    max=votosPartido;
+                    indice=x;
+                    msg="El partido ganador de las elecciones es: "+ partidosCompleto[indice][0]+ " con "+max+ " votos";
+                }
+                else if(max==votosPartido){
+                    msg="Hay un empate entre 2 o más partidos";
+                }
+            }
             return msg;
         }
     

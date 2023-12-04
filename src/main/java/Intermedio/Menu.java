@@ -70,7 +70,6 @@ public class Menu {
                  setPadron(votos.getPadron());
                  setPartidos(votos.getPartidos());
                  break;
-                 
              case 2:
                  int tipoConsulta=0;
                   do{   
@@ -97,20 +96,22 @@ public class Menu {
                         break;
                     case 4: 
                         break;
-                    default: JOptionPane.showMessageDialog(null, "Opcion Invalida. Intente de nuevo");
-                        
+                    default: JOptionPane.showMessageDialog(null, "Opcion Invalida. Intente de nuevo");      
          }
-                break;
-                 
+                break; 
              case 3:
-                
+                 String msg="";
+                 int nulos=0;
+                 Consultas res=new Consultas(getPadron(),getPartidos());
+                 msg=res.ganadorOficial()+"\n"+"Total de votos nulos: "+res.obtenerVotosNulos();
+                 JOptionPane.showMessageDialog(null, msg); 
+                 break;
              case 4:
                  JOptionPane.showMessageDialog(null, "Thanks for using our system");
                  break;
              default:
                  JOptionPane.showMessageDialog(null, "Invalid Option, Try again");                
          }
-        
         }
     }
 }
