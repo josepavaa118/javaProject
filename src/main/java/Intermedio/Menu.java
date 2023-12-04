@@ -5,6 +5,7 @@
 package Intermedio;
 
 import Classes.ArrayCreator;
+import Classes.Consultas;
 import Classes.FileChooser;
 import Classes.FileReader;
 import Classes.Votos;
@@ -71,6 +72,7 @@ public class Menu {
                  break;
                  
              case 2:
+                 
                  
              case 3:
                 

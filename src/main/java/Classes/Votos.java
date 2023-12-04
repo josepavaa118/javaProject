@@ -62,7 +62,7 @@ public class Votos {
                 padron[x][8]=obtenerVoto();
             }
             else{
-                padron[x][8]="0";
+                padron[x][8]="nulo";
             } 
         }
     }
@@ -90,7 +90,7 @@ public class Votos {
     
     private String obtenerVoto(){
         Random rand=new Random();
-        int partidoRandom=rand.nextInt(1, partidos.length);
+        int partidoRandom=rand.nextInt(0, partidos.length);
         String voto=partidos[partidoRandom][0].toString(); 
         return voto;
     }
@@ -103,7 +103,7 @@ public class Votos {
             if (padron[y][8].equals(partidos[x][0])){
                 votos++;
             }
-            else if (padron[y][8].equals("0")){
+            else if (padron[y][8].equals("nulo")){
                 setNulos(getNulos()+1);
             }
             }
