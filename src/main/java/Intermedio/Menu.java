@@ -72,7 +72,35 @@ public class Menu {
                  break;
                  
              case 2:
-                 
+                 int tipoConsulta=0;
+                  do{   
+                    tipoConsulta=Integer.parseInt(JOptionPane.showInputDialog(null,"Select any of the following options:"+"\n"+
+                    "1- Consulta por Nombres"+"\n"+
+                    "2- Consulta por Primer Apellido"+"\n"+
+                    "3- Consulta por Segundo Apellido"+"\n"+
+                    "4- Volver al Menu Principal"));
+                }while (tipoConsulta>4);
+                Consultas cons=new Consultas(getPadron(),getPartidos());
+                String nombreBuscar="";
+                switch (tipoConsulta){
+                    case 1:                    
+                        nombreBuscar=JOptionPane.showInputDialog("Digite el nombre a consultar:");
+                        cons.consultasNombre(nombreBuscar);
+                        break;
+                    case 2:
+                        nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
+                        cons.consultasApellido1(nombreBuscar);
+                     break; 
+                    case 3: 
+                        nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
+                        cons.consultasApellido2(nombreBuscar);
+                        break;
+                    case 4: 
+                        break;
+                    default: JOptionPane.showMessageDialog(null, "Opcion Invalida. Intente de nuevo");
+                        
+         }
+                break;
                  
              case 3:
                 
