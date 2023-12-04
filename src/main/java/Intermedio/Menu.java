@@ -4,8 +4,10 @@
  */
 package Intermedio;
 
+import Classes.ArrayCreator;
 import Classes.FileChooser;
 import Classes.FileReader;
+import Classes.Votos;
 import java.io.IOException;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
@@ -15,8 +17,29 @@ import javax.swing.JOptionPane;
  * @author josep
  */
 public class Menu {
+
+    public String[][] getPadron() {
+        return padron;
+    }
+
+    public void setPadron(String[][] padron) {
+        this.padron = padron;
+    }
+
+    public String[][] getPartidos() {
+        return partidos;
+    }
+
+    public void setPartidos(String[][] partidos) {
+        this.partidos = partidos;
+    }
+       String[][] padron;
+       String[][] partidos;
     
     public void menuInicio() throws IOException, ParseException{
+
+       String datosPadron="";
+       String datosPartidos="";
        int seleccion=0;
        while (seleccion<4) {
          do{   
@@ -35,6 +58,16 @@ public class Menu {
                  String archivoPartidos=seleccionArchivos.getFilePath();
                  FileReader lectorArchivos= new FileReader(archivoPadron, archivoPartidos);
                  lectorArchivos.dataLoad();
+                 datosPadron=lectorArchivos.getFileData();
+                 datosPartidos=lectorArchivos.getPartidosData();
+                 ArrayCreator crearArrays=new ArrayCreator(datosPadron, datosPartidos);
+                 crearArrays.crearArrays();
+                 setPadron(crearArrays.getPadron());
+                 setPartidos(crearArrays.getPartidos());
+                 Votos votos= new Votos(getPadron(),getPartidos());
+                 votos.Votaciones();
+                 setPadron(votos.getPadron());
+                 setPartidos(votos.getPartidos());
                  break;
                  
              case 2:

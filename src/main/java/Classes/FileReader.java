@@ -94,8 +94,7 @@ public class FileReader {
         }
         else{
              JOptionPane.showMessageDialog(null, "Archivos leidos exitosamente!");
-             ArrayCreator crearArrays=new ArrayCreator(padronData, partidosData);
-             crearArrays.crearArrays();
+            
             }
        
        /* JOptionPane.showMessageDialog(null, """

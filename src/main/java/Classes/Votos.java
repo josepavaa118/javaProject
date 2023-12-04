@@ -18,17 +18,40 @@ import javax.swing.JOptionPane;
  * @author josep
  */
 public class Votos {
+
+  
     String[][] padron;
     String[][] partidos;
+    int nulos=0;
+
+    public int getNulos() {
+        return nulos;
+    }
+
+    public void setNulos(int nulos) {
+        this.nulos = nulos;
+    }
+    
+      public String[][] getPadron() {
+        return padron;
+    }
+
+    public String[][] getPartidos() {
+        return partidos;
+    }
 
     public Votos(String [][]datosPadron, String [][]datosPartidos) {
         this.padron=datosPadron;
         this.partidos=datosPartidos;
     }
     
+    public Votos(){}
+    
     public void Votaciones() throws ParseException{
         generarVotos();
+        asignarVotos();
         JOptionPane.showMessageDialog(null, "Votaciones cerradas!");
+        
     }
     
     private void generarVotos() throws ParseException{
@@ -73,6 +96,20 @@ public class Votos {
     }
     
     private void asignarVotos(){
-        
+        int votos=0;
+
+        for (int x=0;x<=partidos.length-1;x++){
+            for(int y=0;y<=padron.length-1;y++){
+            if (padron[y][8].equals(partidos[x][0])){
+                votos++;
+            }
+            else if (padron[y][8].equals("0")){
+                setNulos(getNulos()+1);
+            }
+            }
+            partidos[x][1]=String.valueOf(votos);
+            votos=0;      
+        }
     }
+   
 }

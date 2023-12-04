@@ -1,6 +1,7 @@
-Classes\ArrayCreator.class
 Classes\FileReader.class
 Classes\FileChooser.class
-Classes\Votos.class
 Intermedio\Menu.class
+Classes\ArrayCreator.class
+Classes\Consultas.class
+Classes\Votos.class
 com\mycompany\padron\Padron.class
