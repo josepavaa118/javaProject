@@ -36,7 +36,7 @@ public class Votos {
             String fechaExp=padron[x][3];
             LocalDate cedulaExp=convertirFecha(fechaExp);
             if (puedeVotar(cedulaExp)){
-                padron[x][8]=String.valueOf(obtenerVoto());
+                padron[x][8]=obtenerVoto();
             }
             else{
                 padron[x][8]="0";
@@ -65,10 +65,14 @@ public class Votos {
         }
     }
     
-    private int obtenerVoto(){
+    private String obtenerVoto(){
         Random rand=new Random();
-        int totalPartidos=partidos.length;
-        return rand.nextInt(1, totalPartidos);
+        int partidoRandom=rand.nextInt(1, partidos.length);
+        String voto=partidos[partidoRandom][0].toString(); 
+        return voto;
     }
     
+    private void asignarVotos(){
+        
+    }
 }
