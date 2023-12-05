@@ -53,6 +53,7 @@ public class Consultas {
         }
         else{
             ganador=declararGanador(resultados);
+            votosBusquedas(resultados, nombre);
             JOptionPane.showMessageDialog(null, datos);
             JOptionPane.showMessageDialog(null, ganador);
         }
@@ -82,6 +83,7 @@ public class Consultas {
         }
         else{
             ganador=declararGanador(resultados);
+            votosBusquedas(resultados, apellido);
             JOptionPane.showMessageDialog(null, datos);
             JOptionPane.showMessageDialog(null, ganador);
             
@@ -115,6 +117,8 @@ public class Consultas {
         else{
             ganador=declararGanador(resultados);
             JOptionPane.showMessageDialog(null, datos);
+            votosBusquedas(resultados, apellido);
+            
             JOptionPane.showMessageDialog(null, ganador);
         }
     }
@@ -178,6 +182,14 @@ public class Consultas {
                 }
             }
             return msg;
+        }
+        
+        private void votosBusquedas(int[] votos, String busqueda){
+            String msg="";
+            for (int x=0;x<=votos.length-1;x++){
+                msg=msg+"El partido "+partidosCompleto[x][0]+" obtuvo "+votos[x]+" votos de los "+busqueda+"\n";  
+            }
+            JOptionPane.showMessageDialog(null, msg);
         }
     
 }
