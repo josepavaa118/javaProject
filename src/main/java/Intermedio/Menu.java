@@ -5,6 +5,7 @@
 package Intermedio;
 
 import Classes.ArrayCreator;
+import Classes.Ayuda;
 import Classes.Consultas;
 import Classes.FileChooser;
 import Classes.FileReader;
@@ -43,14 +44,15 @@ public class Menu {
        String datosPadron="";
        String datosPartidos="";
        int seleccion=0;
-       while (seleccion<4) {
+       while (seleccion<5) {
          do{   
          seleccion=Integer.parseInt(JOptionPane.showInputDialog(null,"Select any of the following options:"+"\n"+
                  "1- Iniciar Votaciones"+"\n"+
                  "2- Realizar Consultas"+"\n"+
                  "3- Imprimir Resultados de Votacion"+"\n"+
-                 "4- Salir"));
-         }while (seleccion>4);
+                 "4- Ayuda"+"\n"+
+                 "5- Salir"));
+         }while (seleccion>5);
          switch (seleccion){
              case 1:
                  FileChooser seleccionArchivos=new FileChooser();
@@ -120,6 +122,10 @@ public class Menu {
                     break;
                  }
              case 4:
+                 Ayuda ayuda=new Ayuda();
+                 ayuda.mensajeAyuda();
+                 break;
+             case 5:
                  JOptionPane.showMessageDialog(null, "Thanks for using our system");
                  break;
              default:
