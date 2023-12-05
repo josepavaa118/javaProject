@@ -12,6 +12,7 @@ import Classes.Votos;
 import java.io.IOException;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  *
@@ -72,40 +73,52 @@ public class Menu {
                  break;
              case 2:
                  int tipoConsulta=0;
-                  do{   
-                    tipoConsulta=Integer.parseInt(JOptionPane.showInputDialog(null,"Select any of the following options:"+"\n"+
-                    "1- Consulta por Nombres"+"\n"+
-                    "2- Consulta por Primer Apellido"+"\n"+
-                    "3- Consulta por Segundo Apellido"+"\n"+
-                    "4- Volver al Menu Principal"));
-                }while (tipoConsulta>4);
-                Consultas cons=new Consultas(getPadron(),getPartidos());
-                String nombreBuscar="";
-                switch (tipoConsulta){
-                    case 1:                    
-                        nombreBuscar=JOptionPane.showInputDialog("Digite el nombre a consultar:");
-                        cons.consultasNombre(nombreBuscar);
-                        break;
-                    case 2:
-                        nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
-                        cons.consultasApellido1(nombreBuscar);
-                     break; 
-                    case 3: 
-                        nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
-                        cons.consultasApellido2(nombreBuscar);
-                        break;
-                    case 4: 
-                        break;
-                    default: JOptionPane.showMessageDialog(null, "Opcion Invalida. Intente de nuevo");      
-         }
-                break; 
+                 if((ArrayUtils.isEmpty(padron))||ArrayUtils.isEmpty(partidos)){
+                     JOptionPane.showMessageDialog(null, "Para realizar consultas, debe llenar los padrones primero!");
+                     break;
+                 }
+                 else{
+                    do{   
+                        tipoConsulta=Integer.parseInt(JOptionPane.showInputDialog(null,"Select any of the following options:"+"\n"+
+                        "1- Consulta por Nombres"+"\n"+
+                        "2- Consulta por Primer Apellido"+"\n"+
+                        "3- Consulta por Segundo Apellido"+"\n"+
+                        "4- Volver al Menu Principal"));
+                    }while (tipoConsulta>4);
+                    Consultas cons=new Consultas(getPadron(),getPartidos());
+                    String nombreBuscar="";
+                    switch (tipoConsulta){
+                        case 1:                    
+                            nombreBuscar=JOptionPane.showInputDialog("Digite el nombre a consultar:");
+                            cons.consultasNombre(nombreBuscar);
+                            break;
+                        case 2:
+                            nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
+                            cons.consultasApellido1(nombreBuscar);
+                        break; 
+                        case 3: 
+                            nombreBuscar=JOptionPane.showInputDialog("Digite el apellido a consultar:");
+                            cons.consultasApellido2(nombreBuscar);
+                            break;
+                        case 4: 
+                            break;
+                        default: JOptionPane.showMessageDialog(null, "Opcion Invalida. Intente de nuevo");      
+                    }
+                    break; 
+                    }
              case 3:
-                 String msg="";
-                 int nulos=0;
-                 Consultas res=new Consultas(getPadron(),getPartidos());
-                 msg=res.ganadorOficial()+"\n"+"Total de votos nulos: "+res.obtenerVotosNulos();
-                 JOptionPane.showMessageDialog(null, msg); 
-                 break;
+                 if((ArrayUtils.isEmpty(padron))||ArrayUtils.isEmpty(partidos)){
+                     JOptionPane.showMessageDialog(null, "Para realizar consultas, debe llenar los padrones primero!");
+                     break;
+                 }
+                 else{
+                    String msg="";
+                    int nulos=0;
+                    Consultas res=new Consultas(getPadron(),getPartidos());
+                    msg=res.ganadorOficial()+"\n"+"Total de votos nulos: "+res.obtenerVotosNulos();
+                    JOptionPane.showMessageDialog(null, msg); 
+                    break;
+                 }
              case 4:
                  JOptionPane.showMessageDialog(null, "Thanks for using our system");
                  break;
