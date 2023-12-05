@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 public class Consultas {
     String[][] padronCompleto;
     String[][] partidosCompleto;
+    int votosNulos=0;
 
     public int getVotosNulos() {
         return votosNulos;
@@ -21,8 +22,7 @@ public class Consultas {
     public void setVotosNulos(int votosNulos) {
         this.votosNulos = votosNulos;
     }
-    int votosNulos=0;
-    
+
     public Consultas (String[][] padron, String[][] partidos){
         this.padronCompleto=padron;
         this.partidosCompleto=partidos;
@@ -37,9 +37,15 @@ public class Consultas {
         int indice=0;
         for (int x=0;x<=padronCompleto.length-1;x++){
             if (padronCompleto[x][5].contains(nombreFormato)){
-                datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
-                indice=asignarVotos(padronCompleto[x][8]);
-                resultados[indice]=resultados[indice]+1;
+                if(padronCompleto[x][8].equals("nulo")){
+                    datos=datos+"\n"+"El voto de la Persona "+padronCompleto[x][5]+padronCompleto[x][6]+" ha sido anulado"+"\n";
+                }
+                else{
+                    datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
+                    indice=asignarVotos(padronCompleto[x][8]);
+                    resultados[indice]=resultados[indice]+1;
+                }
+                
             }
         }
         if(datos.isEmpty()){
@@ -61,9 +67,14 @@ public class Consultas {
         String apellidoFormato=apellido.toUpperCase();
         for (int x=0;x<=padronCompleto.length-1;x++){
             if (padronCompleto[x][6].contains(apellidoFormato)){
-                datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+padronCompleto[x][6]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
-                indice=asignarVotos(padronCompleto[x][8]);
-                resultados[indice]=resultados[indice]+1;
+                 if(padronCompleto[x][8].equals("nulo")){
+                    datos=datos+"\n"+"El voto de la Persona "+padronCompleto[x][5]+padronCompleto[x][6]+" ha sido anulado"+"\n";
+                }
+                else{
+                    datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+padronCompleto[x][6]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
+                    indice=asignarVotos(padronCompleto[x][8]);
+                    resultados[indice]=resultados[indice]+1;
+                }
             }
         }
         if(datos.isEmpty()){
@@ -77,7 +88,7 @@ public class Consultas {
         }
     }
     
-        public void consultasApellido2(String apellido){
+    public void consultasApellido2(String apellido){
         int[] resultados;
         resultados= new int[partidosCompleto.length];
         String datos="";
@@ -86,9 +97,16 @@ public class Consultas {
         int indice=0;
         for (int x=0;x<=padronCompleto.length-1;x++){
             if (padronCompleto[x][7].contains(apellidoFormato)){
-                datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+padronCompleto[x][6]+ padronCompleto[x][7]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
-                indice=asignarVotos(padronCompleto[x][8]);
-                resultados[indice]=resultados[indice]+1;
+                if (padronCompleto[x][6].contains(apellidoFormato)){
+                    if(padronCompleto[x][8].equals("nulo")){
+                        datos=datos+"\n"+"El voto de la Persona "+padronCompleto[x][5]+padronCompleto[x][6]+" ha sido anulado"+"\n";
+                    }
+                    else{
+                        datos=datos+"\n"+"La Persona "+padronCompleto[x][5]+padronCompleto[x][6]+ padronCompleto[x][7]+" ha votado por el Partido: "+padronCompleto[x][8]+"\n";
+                        indice=asignarVotos(padronCompleto[x][8]);
+                        resultados[indice]=resultados[indice]+1;
+                    }
+                }
             }
         }
         if(datos.isEmpty()){
@@ -103,11 +121,16 @@ public class Consultas {
         
         private int asignarVotos(String partido){
             int indice=0;
+            if (partido.equals("nulo")){
+                return -1;
+            }
+            else{
             for (int x=0;x<=partidosCompleto.length-1;x++){
                 if (partido.equals(partidosCompleto[x][0])){
                     indice=x;
                     break;
                 }
+            }
             }
             return indice;
         }
