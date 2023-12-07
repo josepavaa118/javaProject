@@ -58,7 +58,7 @@ public class FileReader {
             }
             while (myReader.hasNextLine()) {
                 data =data+"\n"+myReader.nextLine();
-                System.out.println(data);
+                //System.out.println(data);
             }
             myReader.close();
             //Scanner myReader = new Scanner(myObj);
